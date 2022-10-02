@@ -9,10 +9,18 @@ export const apiSlice = createApi({
 
     endpoints: (builder) => ({
         getTodos: builder.query({
-            query: ()=> '/todos'
+            query: () => '/todos',
+        }),
+
+        addTodo: builder.mutation({
+            query: (data) => ({
+                url: '/todos',
+                method: 'POST',
+                body: data
+            })
         })
     })
 
 })
 
-export const { useGetTodosQuery } = apiSlice;
+export const { useGetTodosQuery, useAddTodoMutation } = apiSlice;
